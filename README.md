@@ -1,4 +1,4 @@
-# AI Completion App
+# AI PDF Summarizer App
 
 ## Setup
 
