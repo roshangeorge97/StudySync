@@ -296,7 +296,7 @@ const handleReviewFlashcards = async () => {
     <div>
       <header className="header">
         <div className="header-left">
-          <h1>PDF Comparison Tool</h1>
+          <h1>StudySync: Personalizing Exam Experience</h1>
         </div>
         <div className="header-right">
           <Dropdown>

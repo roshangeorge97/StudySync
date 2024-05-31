@@ -13,9 +13,10 @@ const { getFirestore, doc, updateDoc, collection, addDoc, getDocs, getDoc } = re
 
 app.use(cors());
 app.use(express.json());
-dotenv.config();
+dotenv.config({ path: path.resolve(__dirname, '../env') });
 
-const openai = new OpenAI({ apiKey: "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" });
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+
 
 const completionEmitter = new EventEmitter();
 
