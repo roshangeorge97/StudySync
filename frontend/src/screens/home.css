@@ -1,15 +1,127 @@
-.custom-input {
-  height: 60px;
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.hero {
+  background-color: #343a40; /* Dark gray color */
+  color: #fff;
+  padding: 40px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+}
+
+.input-container {
+  margin: 10px 0;
+  width: 100%;
+}
+
+.file-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.file-input-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.file-input-wrapper:hover {
+  background-color: #f1f1f1;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-input-button {
+  background-color: #20c997;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.file-input-button:hover {
+  background-color: #17a2b8;
 }
 
 .custom-button {
-  height: 60px;
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
 }
 
-.container .hero {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("../images/library.jpeg");
-  height: 50vh;
-  background-position: center;
-  color: white;
+.custom-button:hover {
+  background-color: #0056b3;
+}
+
+.alert {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 800px;
+}
+/* Add this to your existing CSS file */
+.file-selected {
+  border-color: #20c997; /* Change border color when file is selected */
+}
+
+.quiz-button {
+  background-color: #28a745;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.quiz-button:hover {
+  background-color: #218838;
+}
+
+.quiz-button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.flashcard-button {
+  background-color: #ffc107;
+  border: none;
+  color: #212529;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.flashcard-button:hover {
+  background-color: #e0a800;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Adjust this value to change the space between buttons */
 }
