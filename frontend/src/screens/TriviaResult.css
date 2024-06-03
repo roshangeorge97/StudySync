@@ -1,0 +1,28 @@
+.result-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .result-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .result-card h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .result-card h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .result-card button {
+    font-size: 1.2rem;
+  }

@@ -57,15 +57,31 @@ const MyTests = () => {
     navigate(`/home/${testId}`);
   };
 
+  const handleTriviaClick = () => {
+    navigate("/trivia");
+  };
+
   return (
     <div className="my-tests-container">
+     
+      <div className="button-container">
+        <Button ref={popoverTarget} onClick={handleCreateTest} className="mb-3">
+          Create Test
+        </Button>
+        
+        <Button onClick={handleTriviaClick} className="mb-3">
+          Fun Trivia
+        </Button>
+
+      </div>
       <h1>My Tests</h1>
-      <Button ref={popoverTarget} onClick={handleCreateTest} className="mb-3">
-        Create Test
-      </Button>
       <ListGroup>
         {tests.map((test) => (
-          <ListGroup.Item key={test.id} onClick={() => handleTestClick(test.id)}>
+          <ListGroup.Item
+            key={test.id}
+            onClick={() => handleTestClick(test.id)}
+            className="test-item"
+          >
             {test.name || `Test ID: ${test.id}`}
           </ListGroup.Item>
         ))}

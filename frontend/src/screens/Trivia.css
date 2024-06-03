@@ -1,0 +1,32 @@
+.trivia-container {
+    padding: 2rem;
+  }
+  
+  .trivia-container h1 {
+    margin-bottom: 1rem;
+  }
+  
+  .question-container h2 {
+    margin-bottom: 1rem;
+  }
+  
+  .trivia-option {
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .trivia-option:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .score-container {
+    text-align: center;
+  }
+  
+  .score-container h2 {
+    margin-bottom: 1rem;
+  }
+  
+  .score-container button {
+    margin-top: 1rem;
+  }

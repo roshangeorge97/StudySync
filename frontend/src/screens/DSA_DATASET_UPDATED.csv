@@ -1,0 +1,120 @@
+Question,Options,,,,Answer
+,,,,,
+Which if the following is/are the levels of implementation of data structure ?,Abstract level,Application level,Implementation level,All of the above,All of the above
+A binary search tree whose left subtree and right subtree differ in hight by at most 1 unit is called ?,AVL tree,Red-black tree,Lemma tree,None of the above,AVL tree
+What is the time complexity of inserting an element at the end of an array?,O(1),O(nlogn),O(log n),O(n),O(1)
+Which data structure is best suited for implementing a recursive algorithm?,Stack,Queue,Array,Linked List,Stack
+"In a binary search tree, which traversal visits the nodes in ascending order?",Preorder,Inorder,Postorder,Levelorder,Inorder
+Which sorting algorithm has the best average-case time complexity?,Merge Sort,Selection sort,Insertion Sort,Bubble sort,Merge Sort
+What is the worst-case time complexity of quicksort?,O(n),O(nlogn),O(n^2),O(log n),O(n^2)
+Which data structure is used in Depth First Search (DFS) algorithm?,Queue,Stack,Heap,Linked List,Stack
+What is the purpose of a hash table in data structures?,To store data in a sorted manner,To implement priority queues,To provide constant-time access to elements,To sort elements efficiently,To provide constant-time access to elements
+Which data structure is used to implement a LIFO behavior?,Queue,Stack,Heap,Tree,Queue
+What is the time complexity of finding an element in a binary search tree?,O(n),O(nlogn),O(log n),O(n^2),O(log n)
+Which data structure is suitable for implementing a breadth-first search (BFS) algorithm?,Queue,Stack,LinkedList,Heap,Queue
+Which data structure is typically used to implement a priority queue?,Heap,Stack,Queue,LinkedList,Heap
+What is the time complexity of searching for an element in a hash table with a good hash function?,O(n),O(nlogn),O(n^2),O(1),O(1)
+Which sorting algorithm is known for its stability?,Merge Sort,Selection sort,Quick Sort,Insertion Sort,Merge Sort
+"In a binary search tree, which operation is used to find the minimum element?",findMin(),getMin(),minElement(),minValue(),findMin()
+Which data structure is used to implement a disjoint-set data structure efficiently?,Array ,Heap,Disjoint-Set Forest,Linked List,Disjoint-Set Forest
+What is the time complexity of finding the shortest path in a weighted graph using Dijkstra's algorithm?,O(E log V),O( E ),O(V),O(V log V),O(E log V)
+Which data structure is used to implement a cache with a least recently used (LRU) eviction policy?,Queue,Stack,LinkedList,Hash Table,Linked List
+What is the time complexity of inserting an element in a heap data structure?,O(n),O(nlogn),O(1),O(log n),O(log n)
+Which algorithm is used to find the strongly connected components in a directed graph?,Dijkstra's Algorithm,Prim's Algorithm,Bellman-Ford Algorithm,Tarjan's Algorithm,Tarjan's Algorithm
+What is the time complexity of the best-case scenario for quicksort?,O(n),O(nlogn),O(n^2),O(log n),O(nlog n)
+Worst Case Time complexity of accessing an element from a Linked List,O(n),O(nlogn),O(n^2),O(log n),O(n)
+Which of the following is not a fundamental data type in C?,int ,String,double,float,String
+Which of the following is not a valid access specifier in Java?,private,public,internal,protected,Internal
+What is the purpose of the final keyword in Java?,To declare a constant variable,To prevent method overriding,To prevent class inheritance,All of the above,All of the above
+Which of the following is not a valid loop statement in Python?,for,while,do-while,None of the above,do-while
+ What is the purpose of the __init__ method in Python?,To define a constructor for a class,To define a destructor for a class,To define a static method for a class,To define a class method,To define a constructor for a class
+Which of the following is not a valid HTTP method?,GET,POST,PUT,EXECUTE,EXECUTE
+What is the purpose of the JOIN clause in SQL?,To combine rows from two or more tables based on a related column between them,To filter rows based on a specified condition,To group rows that have the same values into summary rows,To sort the result set in ascending or descending order,To combine rows from two or more tables based on a related column between them
+Which of the following is not a valid normalization form?,1NF,2NF,3NF,5NF,5NF
+What is the purpose of the HAVING clause in SQL?,To filter rows based on a specified condition,To group rows that have the same values into summary rows,To filter groups based on a specified condition,To sort the result set in ascending or descending order,To filter groups based on a specified condition
+What is the primary goal of machine learning?, To program computers without human intervention,To enable computers to learn from data and improve performance over time,To create AI systems that can outperform humans,To develop complex algorithms for data processing,To enable computers to learn from data and improve performance over time
+"Which type of machine learning algorithm is trained on labeled data to make predictions on new, unseen data?",Unsupervised Learning,Reinforcement Learning,Semi-supervised Learning,Supervised Learning,Supervised Learning
+"What is the process of preparing raw data by cleaning, transforming, and normalizing it for machine learning?",Data Preprocessing,Data Engineering,Data Wrangling,Data Augmentation,Data Preprocessing
+"In unsupervised learning, the primary task is:",Predicting an output value based on input data,Discovering patterns or structures in data,Maximizing cumulative rewards through interactions with the environment,Learning from expert demonstrations,Discovering patterns or structures in data
+Which machine learning algorithm is inspired by the behavior of neurons in the human brain?,Decision Trees,k-Nearest Neighbors (k-NN),Support Vector Machines (SVM),Artificial Neural Networks (ANN),Artificial Neural Networks (ANN)
+What is the process of feeding a machine learning model with data to adjust its internal parameters and improve performance?,Model Validation,Model Optimization,Model Training,Model Testing,Model Training
+The loss function in a machine learning model measures:,The number of features used in the model,The complexity of the model,The difference between predicted and actual values,The time taken to train the model,The difference between predicted and actual values
+What is the name of the technique used to deal with overfitting in machine learning models?,Underfitting,Regularization,Feature Engineering,Cross-validation,Regularization
+Which machine learning algorithm is commonly used for classification tasks and is based on finding the best hyperplane that separates data points into different classes?,Decision Trees,Support Vector Machines (SVM),Random Forest,k-Nearest Neighbors (k-NN),Support Vector Machines (SVM)
+What is the purpose of feature scaling in machine learning?,To normalize the range of independent variables,To add new features to the dataset,To reduce the number of features,To remove outliers from the dataset,To normalize the range of independent variables
+What is the purpose of the bias term in a machine learning model?,To introduce randomness into the model,To shift the decision boundary of the model,To control the complexity of the model,To provide a constant offset for the model's predictions,To provide a constant offset for the model's predictions
+Which machine learning algorithm is used for dimensionality reduction and can capture the most important features in a dataset?,Principal Component Analysis (PCA),Linear Discriminant Analysis (LDA),t-SNE (t-Distributed Stochastic Neighbor Embedding),Autoencoders,Principal Component Analysis (PCA)
+What is the purpose of the activation function in an artificial neural network?,To introduce non-linearity into the model,To control the learning rate of the model,To prevent overfitting in the model,To initialize the weights of the model,To introduce non-linearity into the model
+Which machine learning algorithm is used for clustering data points into groups based on their similarity?,k-Means Clustering,Hierarchical Clustering,DBSCAN (Density-Based Spatial Clustering of Applications with Noise),All of the above,All of the above
+What is the purpose of the validation set in machine learning?,To train the model,To evaluate the performance of the model during training,To tune the hyperparameters of the model,To test the final performance of the model,To tune the hyperparameters of the model
+Which machine learning algorithm is used for anomaly detection and can identify outliers in a dataset?,Isolation Forest,One-Class SVM,Local Outlier Factor (LOF),All of the above,All of the above
+What is the purpose of the learning rate in a machine learning model?,To control the step size during optimization,To prevent overfitting in the model,To initialize the weights of the model,To introduce randomness into the model,To control the step size during optimization
+Which machine learning algorithm is used for recommendation systems and can predict the preferences of users based on their past behavior?,Collaborative Filtering,Content-Based Filtering,Matrix Factorization,All of the above,All of the above
+What is the purpose of the regularization parameter in a machine learning model?,To control the complexity of the model,To introduce non-linearity into the model,To prevent overfitting in the model,To tune the learning rate of the model,To control the complexity of the model
+Which machine learning algorithm is used for natural language processing tasks and can generate human-like text?,Recurrent Neural Networks (RNNs),Long Short-Term Memory (LSTMs),Transformers,All of the above,All of the above
+What is the refractive Index of air (approx)?,1,50,60,0,1
+Which Experiment says that light is a wave?,young's double slith Experiment,Fizeu's method,compton scattering,Michel-Morley Experiment,young's double slith Experiment
+What is the purpose of the const keyword in C++?,To declare a constant variable,To declare a static variable,To declare a pointer to a constant variable,All of the above,All of the above
+Which of the following is not a valid access specifier in Java?,public,private,protected,internal,internal
+ What is the purpose of the break statement in a loop?,To exit the current iteration of the loop,To exit the entire loop,To skip the current iteration of the loop,To continue to the next iteration of the loop,To exit the entire loop
+What is the purpose of the continue statement in a loop?,To exit the current iteration of the loop,To exit the entire loop,To continue to the next iteration of the loop,To skip the current iteration of the loop,To skip the current iteration of the loop
+What is the purpose of the static keyword in C++?,To declare a variable with global scope,To declare a variable with local scope,To declare a variable with static storage duration,To declare a variable with dynamic storage duration, To declare a variable with static storage duration
+What is the purpose of the virtual keyword in C++?,To declare a virtual function,To declare a pure virtual function,To declare a virtual base class,All of the above, All of the above
+What is the purpose of the abstract keyword in Java?,To declare an abstract class,To declare an abstract method,To declare an interface,All of the above, All of the above
+What is the purpose of the interface keyword in Java?,To define a contract for classes to implement,To define a class that cannot be instantiated,To define a class that can be extended by other classes,To define a class that can be used as a template for creating objects,To define a contract for classes to implement
+What is the purpose of the yield statement in Python?,To exit a function and return a value,To pause the execution of a function and return a value,To raise an exception in a function,To define a generator function,To pause the execution of a function and return a value
+What is the purpose of the lambda keyword in Python?,To define a function with a single expression,To define a function with multiple expressions,To define a function with a name,To define a function with a return statement,To define a function with a single expression
+What is the purpose of the try-except block in Python?,To handle exceptions that may occur during the execution of a program,To define a function that may raise an exception,To define a module that may raise an exception,To define a class that may raise an exception,To handle exceptions that may occur during the execution of a program
+ What is the purpose of the super() function in Python,To call a method in a parent class from a child class,To create a new instance of a class,To define a class method,To define a static method,To call a method in a parent class from a child class
+Which of the following is not a programming language?,Python,C++,ASCII,Java,ASCII
+Which of the following is not a data structure?,Algorithm,Stack,Linked List,Array,Algorithm
+What is the time complexity of the binary search algorithm?,O(n),O(nlogn),O(n^2),O(log n),O(log n)
+Which of the following is not a type of software testing?,Unit testing,System testing,Integration testing,Functional testing,Functional testing
+What is the primary purpose of a database management system (DBMS)?,To provide a user interface for the database,To store data in the database,To manage and manipulate data in the database,To provide security for the database,To manage and manipulate data in the database
+What is the primary function of a switch in a network?,To provide a firewall,To connect multiple networks,To forward data packets to the appropriate device,To convert data from analog to digital,To forward data packets to the appropriate device
+Which of the following is not a type of malware?,Worm,Virus,Trojan horse,Firewall,Firewall
+What is the primary purpose of normalization in a database?,To reduce data redundancy and improve data integrity,To increase data redundancy and improve data security,To provide a user interface for the database,To store data in the database,To reduce data redundancy and improve data integrity
+Which of the following is not a type of cloud computing?,IaaS,Paas,Saas,Laas,LaaS
+What is the primary purpose of a compiler in programming?,To convert high-level language into machine language,To find errors in the program,To provide a user interface for the program,To document the program,To convert high-level language into machine language
+What is the primary function of a router in a network?, To provide a firewall,To connect multiple networks,To amplify the signal,To forward data packets to the appropriate device,To connect multiple networks
+Which of the following is not a type of virtualization?, Server virtualization,Desktop virtualization,Network virtualization,Storage virtualization,None of the above
+What is the primary purpose of a load balancer in a network?,To provide a firewall,To connect multiple networks, To distribute network traffic evenly across multiple servers,To convert data from analog to digital,To distribute network traffic evenly across multiple servers
+What is the primary purpose of a cache in computing?,To provide a backup for the data,To store data permanently,To provide security for the data,To provide temporary storage for frequently used data,To provide temporary storage for frequently used data
+Which of the following is not a type of search algorithm?,Binary search,Linear search,Depth-first search,None of the above,None of the above
+Which of the following is not a principle of object-oriented programming?,Encapsulation,Inheritance,Polymorphism,Multiprocessing,Multiprocessing
+Which of the following is not a type of network?,LAN,MAN,WAN,CAN,CAN
+"In the context of databases, what does ACID stand for?","Atomicity, Consistency, Isolation, Durability","Access, Consistency, Integrity, Database","Atomicity, Completeness, Isolation, Durability"," Availability, Concurrency, Integrity, Durability","Atomicity, Consistency, Isolation, Durability"
+ What is the main difference between a stack and a queue?,"Stacks are static, queues are dynamic data structures"," Stacks follow LIFO order, queues follow FIFO order"," Stacks can only store integers, queues can store any data type","There is no difference, they are the same thing"," Stacks follow LIFO order, queues follow FIFO order"
+"What is the purpose of the ""virtual"" keyword in C++?",To create a pure virtual function,To overload operators,To declare a friend function,To create a virtual base class,To create a virtual base class
+What is the main purpose of a Trie data structure?,Efficient information retrieval,Efficient sorting of data,Efficient searching of keys,Efficient compression of data,Efficient searching of keys
+"In the context of computer networks, what does TCP stand for?",Transmission Control Protocol,Transfer Connected Protocol,Transformative Connecting Protocol,Transparent Connectivity Protocol,Transmission Control Protocol
+"What is the purpose of the ""finally"" block in Java exception handling?",To define an alternative execution path,To execute code regardless of whether an exception is thrown or not,To handle a specific type of exception,To explicitly throw an exception,To execute code regardless of whether an exception is thrown or not
+What is the key difference between public and private inheritance in C++?,"Public inheritance preserves base class member access, private does not",Private inheritance is more memory efficient than public inheritance,"There is no difference, they are the same thing","Private inheritance allows accessing private members, public does not","Public inheritance preserves base class member access, private does not"
+"In the context of machine learning, what is overfitting?",When a model performs well on training data but poorly on new data,When a model fails to capture underlying patterns in data,When a model is too simple to learn from data effectively,When a model has high bias and high variance,When a model performs well on training data but poorly on new data
+What is the key difference between GPU and CPU?,"GPUs are better for parallel processing, CPUs are better for serial processing",GPUs consume more power than CPUs,GPUs are faster than CPUs for all types of computations,"There is no difference, they are interchangeable","GPUs are better for parallel processing, CPUs are better for serial processing"
+"What is the purpose of the ""volatile"" keyword in C/C++?",To declare a global variable,To prevent compiler optimizations that reorder operations,To create a thread-safe variable,To indicate that a value may change unexpectedly,To indicate that a value may change unexpectedly
+"In the context of operating systems, what is thrashing?",Excessive swapping of processes between main memory and disk,A type of memory leak caused by frequent allocation and deallocation,A condition where the CPU is constantly busy but no processes are making progress,A security vulnerability that allows unauthorized access to system resources,Excessive swapping of processes between main memory and disk
+"What is the purpose of the ""static"" keyword in Java?",To declare a static method,To create a singleton class,To allocate memory for a variable at compile-time,All of the above,All of the above
+"In the context of databases, what is denormalization?",The process of optimizing the database for better read performance,The process of removing redundant data from a database,The process of converting data into a more readable format,The process of creating additional indexes for faster queries,The process of optimizing the database for better read performance
+"What is the purpose of the ""final"" keyword in Java?",To declare a constant variable,To prevent a class from being subclassed,To create an immutable object,All of the above,All of the above
+"In the context of computer networks, what is a NAT (Network Address Translation)?",A protocol for translating private IP addresses to public IP addresses,A type of firewall used to protect networks from unauthorized access,A technique for load balancing network traffic across multiple servers,A method for compressing network data to reduce bandwidth usage,A protocol for translating private IP addresses to public IP addresses
+"What is the purpose of the ""friend"" keyword in C++?",To declare a function or class as a friend of another class,To create a friendship between two objects,To overload operators for a class,To optimize a function for better performance,To declare a function or class as a friend of another class
+"In the context of machine learning, what is a convolutional neural network (CNN)?",A type of neural network used for image classification and recognition,A neural network designed for time series forecasting,A type of unsupervised learning algorithm for clustering,A type of supervised learning,A type of neural network used for image classification and recognition
+What is the key difference between depth-first search (DFS) and breadth-first search (BFS)?,"DFS explores as far as possible along each branch before backtracking, BFS explores all nodes at the current depth before moving to the next level",DFS is more memory-efficient than BFS,"BFS is guaranteed to find the shortest path, DFS is not",All of the above,All of the above
+"In the context of computer architecture, what is pipelining?",A technique to improve CPU performance by breaking down instruction execution into a series of smaller steps,A way to connect multiple CPUs to increase processing power,A method for compressing data to improve storage efficiency,A parallel processing technique used in GPUs,A technique to improve CPU performance by breaking down instruction execution into a series of smaller steps
+"In the context of databases, what is an index?",A data structure used to optimize search and retrieval operations,A type of database query used for data manipulation,A technique for securing sensitive data in a database,A method for compressing data in a database to save storage space,A data structure used to optimize search and retrieval operations
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,
+,,,,,

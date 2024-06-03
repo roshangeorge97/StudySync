@@ -60,3 +60,16 @@
 .submit-button:hover {
   background-color: #218838;
 }
+
+.loader {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 20px;
+  animation: fadeIn 1s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}

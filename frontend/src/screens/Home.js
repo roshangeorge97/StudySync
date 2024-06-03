@@ -326,7 +326,7 @@ const handleReviewFlashcards = async () => {
             <form className="w-100" onSubmit={handleSubmit}>
               <div className="input-container">
                 <label htmlFor="fileInput1" className="file-label">
-                  Teacher's Resource
+                  Exam's Resource
                   <div className={`file-input-wrapper ${fileSelected1 ? 'file-selected' : ''}`}>
                     <input
                       id="fileInput1"
@@ -342,7 +342,7 @@ const handleReviewFlashcards = async () => {
               </div>
               <div className="input-container">
                 <label htmlFor="fileInput2" className="file-label">
-                  Student's Notes
+                  Your Notes
                   <div className={`file-input-wrapper ${fileSelected2 ? 'file-selected' : ''}`}>
                     <input
                       id="fileInput2"

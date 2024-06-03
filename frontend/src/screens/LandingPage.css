@@ -32,6 +32,12 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
   }
+
+  .logo img{
+    height: 40px;
+    width: 7em;
+
+  }
   
   .nav a {
     margin-right: 2rem;
@@ -61,7 +67,7 @@ body {
   }
   
   .left-content {
-    max-width: 45%;
+    max-width: 60%;
   }
   
   .left-content h1 {

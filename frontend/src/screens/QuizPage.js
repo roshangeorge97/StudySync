@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom"; // Import useHistory
 import "./QuizPage.css";
 
 const QuizPage = () => {
@@ -9,6 +9,7 @@ const QuizPage = () => {
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [results, setResults] = useState([]);
+  const [isLoading, setIsLoading] = useState(false); // New state for loading status
 
   const handleAnswerButtonClick = (isCorrect, subtopic) => {
     const updatedResults = [
@@ -32,6 +33,7 @@ const QuizPage = () => {
   };
 
   const handleSubmit = async () => {
+    setIsLoading(true); // Set loading state to true
     try {
       const response = await fetch("http://localhost:5001/results", {
         method: "POST",
@@ -52,12 +54,16 @@ const QuizPage = () => {
       }
     } catch (error) {
       console.error("Error submitting results:", error);
+    } finally {
+      setIsLoading(false); // Set loading state to false
     }
   };
 
   return (
     <div className="quiz-container">
-      {showScore ? (
+      {isLoading ? ( // Conditionally render the loader
+        <div className="loader">Submitting quiz, this may take a while...</div>
+      ) : showScore ? (
         <>
           <p className="score-section">
             You scored {score} out of {quiz.length}
