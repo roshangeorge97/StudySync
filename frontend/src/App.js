@@ -8,6 +8,7 @@ import Flashcards from "./screens/Flashcards";
 import MyTests from "./screens/MyTests";
 import "./styles/bootstrap-custom.scss";
 import TestDetails from "./screens/TestDetails";
+import LandingPage from "./screens/LandingPage";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/my-tests" element={<MyTests />} />
         <Route path="/quiz" element={<QuizPage />} />
         <Route path="/flashcards" element={<Flashcards />} />
+        <Route path="/" element={<LandingPage />} />
       </Routes>
     </Router>
   );

@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "axios"; 
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
@@ -24,8 +24,6 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [fileSelected1, setFileSelected1] = useState(false);
   const [fileSelected2, setFileSelected2] = useState(false);
-  const [showQuizButton, setShowQuizButton] = useState(false);
-  const [showFlashcardsButton, setShowFlashcardsButton] = useState(false);
   const [showQuizButton1, setShowQuizButton1] = useState(false);
   const [showFlashcardsButton1, setShowFlashcardsButton1] = useState(false);
   const [isGeneratingQuiz, setIsGeneratingQuiz] = useState(false);
@@ -98,44 +96,53 @@ const Home = () => {
     setIsLoading(true);
     setError("");
     setMissingTopics("");
-
+  
     if (!selectedFile1 || !selectedFile2) {
       setError("Please upload both documents!");
       setIsLoading(false);
       return;
     }
-
+  
     try {
       const formData = new FormData();
       formData.append("pdf1", selectedFile1);
       formData.append("pdf2", selectedFile2);
       formData.append("uid", user.uid);
       formData.append("testId", selectedTestId);
-
+  
       const response = await instance.post("/api/comparepdfs", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
-
+  
       if (response.data.error) {
         setError(response.data.error);
-        setShowQuizButton(false);
-        setShowFlashcardsButton(false);
+        setShowQuizButton1(false);
+        setShowFlashcardsButton1(false);
       } else {
-        setError("");
-        setShowQuizButton(true);
-        setShowFlashcardsButton(true);
+        console.log(response.data);
+        setShowQuizButton1(true);
+        setShowFlashcardsButton1(true);
+        
+        // Fetch and update the isUploaded status
+        const testRef = doc(db, `users/${user.uid}/tests`, selectedTestId);
+        const testDoc = await getDoc(testRef);
+        if (testDoc.exists()) {
+          const uploadedStatus = testDoc.data().isUploaded;
+          setIsUploaded(uploadedStatus);
+        }
       }
     } catch (e) {
       console.error(e);
       setError("Something went wrong");
-      setShowQuizButton(false);
-      setShowFlashcardsButton(false);
+      setShowQuizButton1(false);
+      setShowFlashcardsButton1(false);
     } finally {
       setIsLoading(false);
     }
   };
+  
 
   const handleFileChange1 = (event) => {
     const file = event.target.files[0];
@@ -149,72 +156,72 @@ const Home = () => {
     setFileSelected2(true);
   };
 
-  const handleGenerateQuiz = async () => {
-    setIsGeneratingQuiz(true);
-    setError("");
-    setMissingTopics("");
+  // const handleGenerateQuiz = async () => {
+  //   setIsGeneratingQuiz(true);
+  //   setError("");
+  //   setMissingTopics("");
   
-    try {
-      const formData = new FormData();
-      formData.append("pdf1", selectedFile1);
-      formData.append("pdf2", selectedFile2);
+  //   try {
+  //     const formData = new FormData();
+  //     formData.append("pdf1", selectedFile1);
+  //     formData.append("pdf2", selectedFile2);
   
-      const response = await instance.post("/api/generatequiz", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+  //     const response = await instance.post("/api/generatequiz", formData, {
+  //       headers: {
+  //         "Content-Type": "multipart/form-data",
+  //       },
+  //     });
   
-      if (response.data.error) {
-        setError(response.data.error);
-      } else {
-        setError("");
-        navigate('/quiz', { state: { quiz: response.data.quiz, userId: user.uid, testId: selectedTestId } });
-      }
-    } catch (error) {
-      console.error(error);
-      setError("Something went wrong");
-    } finally {
-      setIsGeneratingQuiz(false);
-    }
-  };
+  //     if (response.data.error) {
+  //       setError(response.data.error);
+  //     } else {
+  //       setError("");
+  //       navigate('/quiz', { state: { quiz: response.data.quiz, userId: user.uid, testId: selectedTestId } });
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //     setError("Something went wrong");
+  //   } finally {
+  //     setIsGeneratingQuiz(false);
+  //   }
+  // };
 
-  const handleGenerateFlashcards = async () => {
-    if (flashcards) {
-      navigate("/flashcards", { state: { flashcards } });
-    } else {
-      setIsGeneratingFlashcards(true);
-      setError("");
-      setMissingTopics("");
+  // const handleGenerateFlashcards = async () => {
+  //   if (flashcards) {
+  //     navigate("/flashcards", { state: { flashcards } });
+  //   } else {
+  //     setIsGeneratingFlashcards(true);
+  //     setError("");
+  //     setMissingTopics("");
 
-      try {
-        const formData = new FormData();
-        formData.append("pdf1", selectedFile1);
-        formData.append("pdf2", selectedFile2);
-        formData.append("uid", user.uid);
-        formData.append("testId", selectedTestId);
+  //     try {
+  //       const formData = new FormData();
+  //       formData.append("pdf1", selectedFile1);
+  //       formData.append("pdf2", selectedFile2);
+  //       formData.append("uid", user.uid);
+  //       formData.append("testId", selectedTestId);
 
-        const response = await instance.post("/api/generateflashcards", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        });
+  //       const response = await instance.post("/api/generateflashcards", formData, {
+  //         headers: {
+  //           "Content-Type": "multipart/form-data",
+  //         },
+  //       });
 
-        if (response.data.error) {
-          setError(response.data.error);
-        } else {
-          setError("");
-          setFlashcards(response.data.flashcards);
-          navigate("/flashcards", { state: { flashcards: response.data.flashcards } });
-        }
-      } catch (error) {
-        console.error(error);
-        setError("Failed to generate flashcards. Please try again later.");
-      } finally {
-        setIsGeneratingFlashcards(false);
-      }
-    }
-  };
+  //       if (response.data.error) {
+  //         setError(response.data.error);
+  //       } else {
+  //         setError("");
+  //         setFlashcards(response.data.flashcards);
+  //         navigate("/flashcards", { state: { flashcards: response.data.flashcards } });
+  //       }
+  //     } catch (error) {
+  //       console.error(error);
+  //       setError("Failed to generate flashcards. Please try again later.");
+  //     } finally {
+  //       setIsGeneratingFlashcards(false);
+  //     }
+  //   }
+  // };
 
 const fetchMissingTopics = async (testId) => {
   try {
@@ -314,7 +321,7 @@ const handleReviewFlashcards = async () => {
       </header>
       <div className="container">
         <div className="hero d-flex align-items-center justify-content-center text-center flex-column p-3">
-          <p className="lead">Compare Teacher's Resources with Student's Notes!</p>
+          <p className="lead">Lets make your learning path more Personalized!</p>
           {!isUploaded ? (
             <form className="w-100" onSubmit={handleSubmit}>
               <div className="input-container">
@@ -359,21 +366,21 @@ const handleReviewFlashcards = async () => {
             </form>
           ) : (
             <div className="mt-3 button-container">
-              {showQuizButton && (
+              {/* {showQuizButton && (
                 <button className="quiz-button" onClick={handleGenerateQuiz} disabled={isGeneratingQuiz}>
                   {isGeneratingQuiz ? "Generating Quiz..." : "Generate Quiz"}
                 </button>
-              )}
+              )} */}
               {showQuizButton1 && (
                 <button className="quiz-button" onClick={handleGenerateQuizAgain} disabled={isGeneratingQuiz}>
-                  {isGeneratingQuiz ? "Generating Quiz..." : "Quiz Again"}
+                  {isGeneratingQuiz ? "Generating Quiz..." : "Challenge!"}
                 </button>
               )}
-              {showFlashcardsButton && (
+              {/* {showFlashcardsButton && (
                 <button className="flashcard-button" onClick={handleGenerateFlashcards} disabled={isGeneratingFlashcards}>
                   {isGeneratingFlashcards ? "Generating Flashcards..." : "Generate Flashcards"}
                 </button>
-              )}
+              )} */}
               {showFlashcardsButton1 && (
                 <button className="flashcard-button" onClick={handleReviewFlashcards} disabled={isGeneratingFlashcards}>
                   {isGeneratingFlashcards ? "Generating Flashcards..." : "Review Flashcards"}

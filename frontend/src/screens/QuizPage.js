@@ -56,10 +56,10 @@ const QuizPage = () => {
   };
 
   return (
-    <>
+    <div className="quiz-container">
       {showScore ? (
         <>
-          <p>
+          <p className="score-section">
             You scored {score} out of {quiz.length}
           </p>
           <button onClick={handleSubmit} className="submit-button">
@@ -67,25 +67,27 @@ const QuizPage = () => {
           </button>
         </>
       ) : (
-        <>
-          <p>
+        <div className="question-section">
+          <p className="question-count">
             Question {currentQuestionIndex + 1}/{quiz.length}
           </p>
-          <p>{quiz[currentQuestionIndex].question}</p>
-          {quiz[currentQuestionIndex].options.map((option, index) => (
-            <button
-              key={index}
-              onClick={() =>
-                handleAnswerButtonClick(option.isCorrect, quiz[currentQuestionIndex].subtopic)
-              }
-              className="quiz-button"
-            >
-              {option.text}
-            </button>
-          ))}
-        </>
+          <p className="question-text">{quiz[currentQuestionIndex].question}</p>
+          <div className="answer-section">
+            {quiz[currentQuestionIndex].options.map((option, index) => (
+              <button
+                key={index}
+                onClick={() =>
+                  handleAnswerButtonClick(option.isCorrect, quiz[currentQuestionIndex].subtopic)
+                }
+                className="quiz-button"
+              >
+                {option.text}
+              </button>
+            ))}
+          </div>
+        </div>
       )}
-    </>
+    </div>
   );
 };
 

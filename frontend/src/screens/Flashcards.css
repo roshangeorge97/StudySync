@@ -1,67 +1,83 @@
 .flashcards-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.flashcard-box {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.flashcard-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  max-height: 80%;
+  overflow-y: auto;
+  transform: scale(0.9);
+  animation: scaleUp 0.3s forwards;
+}
+
+.popup-content h2 {
+  margin-top: 0;
+}
+
+.popup-content ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.popup-content button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 4px;
+}
+
+.popup-content button:hover {
+  background-color: #0056b3;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
   }
-  
-  .flashcard-box {
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    padding: 20px;
-    cursor: pointer;
-    transition: transform 0.2s;
-    width: 200px;
-    text-align: center;
+}
+
+@keyframes scaleUp {
+  to {
+    transform: scale(1);
   }
-  
-  .flashcard-box:hover {
-    transform: scale(1.05);
-  }
-  
-  .popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .popup-content {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 400px;
-    max-height: 80%;
-    overflow-y: auto;
-  }
-  
-  .popup-content h2 {
-    margin-top: 0;
-  }
-  
-  .popup-content ul {
-    list-style-type: disc;
-    padding-left: 20px;
-  }
-  
-  .popup-content button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .popup-content button:hover {
-    background-color: #0056b3;
-  }
-  
+}

@@ -15,7 +15,7 @@ app.use(cors());
 app.use(express.json());
 dotenv.config({ path: path.resolve(__dirname, '../env') });
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const openai = new OpenAI({ apiKey: "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"});
 
 
 const completionEmitter = new EventEmitter();
