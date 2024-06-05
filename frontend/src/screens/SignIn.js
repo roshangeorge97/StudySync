@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { auth, db } from "./firebase-config";
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { Button, Form } from "react-bootstrap";
+import Header from "./header";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -32,6 +33,7 @@ const SignIn = () => {
 
   return (
     <div className="auth-container">
+      <Header/>
       <Form className="auth-form" onSubmit={handleSignIn}>
         <h2>Sign In</h2>
         {error && <div className="error">{error}</div>}
@@ -53,10 +55,10 @@ const SignIn = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <Button variant="primary" type="submit" className="mt-3">
+        <Button variant="success" type="submit" className="mt-3">
           Sign In
         </Button>
-        <Button variant="secondary" onClick={handleGoogleSignIn} className="mt-3">
+        <Button variant="success" onClick={handleGoogleSignIn} className="mt-3">
           Sign in with Google
         </Button>
         <p className="mt-3">

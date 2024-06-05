@@ -6,7 +6,8 @@ body {
   }
   
   .landing-page {
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    font-family: monospace;
+    background: white;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
@@ -22,6 +23,7 @@ body {
     padding: 0.5rem 2rem;
     background-color: #fff;
     position: fixed;
+    height: 5em;
     top: 0;
     left: 0;
     z-index: 1000;
@@ -34,9 +36,8 @@ body {
   }
 
   .logo img{
-    height: 40px;
-    width: 7em;
-
+    height: 10em;
+    width: 10em;
   }
   
   .nav a {
@@ -47,7 +48,7 @@ body {
   }
   
   .register-button {
-    background-color: #ffdb58;
+    background-color: #27ac1f;
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 5px;
@@ -59,15 +60,17 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 4rem 2rem 2rem 2rem; /* Reduced top padding to move content up */
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-    color: white;
+    padding: 4rem 2rem 2rem 2rem; /* Reduced top padding to move content up  */
+    background: white;
+    /* color: linear-gradient(135deg, #27ac1f 0%, #85fe78 100%);; */
+    color: #12181e;
     flex: 1;
     margin-top: 4rem; /* Adjust this value to ensure it doesn't overlap with the fixed header */
   }
   
   .left-content {
-    max-width: 60%;
+    padding-left: 7em;
+    max-width: 55%;
   }
   
   .left-content h1 {
@@ -84,19 +87,21 @@ body {
     padding: 0.75rem 1.5rem;
     border: none;
     border-radius: 5px;
-    background-color: #ffdb58;
+    background-color: #27ac1f;
     cursor: pointer;
+    color: white;
     font-size: 1rem;
     transition: background-color 0.3s ease;
   }
   
   .get-started-button:hover {
-    background-color: #f0c14b;
+    background-color: #85fe78;
   }
   
   .right-content {
+    padding-right: 7em;
     position: relative;
-    max-width: 50%;
+    max-width: 60%;
   }
   
   .right-content img {

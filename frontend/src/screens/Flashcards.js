@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./Flashcards.css";
+import Header from "./Header1";
 
 const Flashcards = () => {
   const location = useLocation();
@@ -22,6 +23,7 @@ const Flashcards = () => {
 
   return (
     <div className="flashcards-container">
+      <Header />
       {flashcards.map((flashcard, index) => (
         <div
           key={index}

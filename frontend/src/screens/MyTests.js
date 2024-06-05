@@ -5,6 +5,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { collection, addDoc, query, getDocs } from "firebase/firestore";
 import { Button, ListGroup, Popover, Overlay } from "react-bootstrap";
 import "./mytests.css";
+import Header from "./Header1";
 
 const MyTests = () => {
   const [tests, setTests] = useState([]);
@@ -63,17 +64,7 @@ const MyTests = () => {
 
   return (
     <div className="my-tests-container">
-     
-      <div className="button-container">
-        <Button ref={popoverTarget} onClick={handleCreateTest} className="mb-3">
-          Create Test
-        </Button>
-        
-        <Button onClick={handleTriviaClick} className="mb-3">
-          Fun Trivia
-        </Button>
-
-      </div>
+      <Header />
       <h1>My Tests</h1>
       <ListGroup>
         {tests.map((test) => (
@@ -86,7 +77,17 @@ const MyTests = () => {
           </ListGroup.Item>
         ))}
       </ListGroup>
-
+      <div className="button-container">
+        <Button ref={popoverTarget} onClick={handleCreateTest} className="mb-3">
+          Prepare new test
+        </Button>
+      </div>
+      <div className="divider">---</div>
+      <div className="button-container">
+        <Button onClick={handleTriviaClick} className="mb-3">
+          Fun Trivia🎈
+        </Button>
+      </div>
       <Overlay
         show={showPopover}
         target={popoverTarget}

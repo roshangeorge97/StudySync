@@ -4,6 +4,10 @@ html, body {
   padding: 0;
 }
 
+header .header-logo img{
+  height: 15em;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -53,7 +57,7 @@ html, body {
 }
 
 .file-input-button {
-  background-color: #20c997;
+  background-color: #27ac1f;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -62,11 +66,11 @@ html, body {
 }
 
 .file-input-button:hover {
-  background-color: #17a2b8;
+  background-color: #85fe78;
 }
 
 .custom-button {
-  background-color: #007bff;
+  background-color: #27ac1f;
   border: none;
   color: #fff;
   padding: 10px 20px;
@@ -74,7 +78,7 @@ html, body {
 }
 
 .custom-button:hover {
-  background-color: #0056b3;
+  background-color: #27ac1f;
 }
 
 .alert {

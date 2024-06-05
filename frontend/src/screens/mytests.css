@@ -1,15 +1,33 @@
 .my-tests-container {
-  padding: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 6rem 2rem 2rem 2rem; /* Add top padding to move content down */
 }
 
 .my-tests-container h1 {
   margin-bottom: 1rem;
+  font-family: monospace;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center; /* Center the h1 element */
 }
 
 .button-container {
   display: flex;
   gap: 1rem;
   margin-bottom: 1rem;
+}
+
+.button-container button {
+  color: white;
+  background-color: #27ac1f;
+  border: #27ac1f;
+}
+
+
+.button-container1 button {
+  color: white;
+  background-color: #27ac1f;
+  border: #27ac1f;
 }
 
 .my-tests-container .mb-3 {
@@ -32,6 +50,14 @@
 
 .my-tests-container .test-item {
   padding: 0.75rem 1.25rem;
+}
+
+.divider {
+  width: 100%;
+  border-top: 1px solid #ccc;
+  margin: 1rem 0;
+  text-align: center;
+  color: #ccc;
 }
 
 .popover-header {

@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  padding: 20px;
+  padding: 100px 20px 20px 20px; /* Add top padding to move flashcards down */
 }
 
 .flashcard-box {
@@ -58,7 +58,7 @@
 .popup-content button {
   margin-top: 20px;
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #27ac1f;
   color: white;
   border: none;
   cursor: pointer;
@@ -67,7 +67,7 @@
 }
 
 .popup-content button:hover {
-  background-color: #0056b3;
+  background-color: #85fe78;
 }
 
 @keyframes fadeIn {

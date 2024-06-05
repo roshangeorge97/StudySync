@@ -1,0 +1,40 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem 2rem;
+    background-color: #fff;
+    position: fixed;
+    height: 5em;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .logo img {
+    height: 10em;
+    width: 10em;
+  }
+  
+  .nav a {
+    margin-right: 2rem;
+    margin-top: 0.5rem;
+    text-decoration: none;
+    color: #000;
+  }
+  
+  .register-button {
+    background-color: #27ac1f;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  

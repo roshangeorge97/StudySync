@@ -1,5 +1,4 @@
-Question,Options,,,,Answer
-,,,,,
+Question,Option1,Option2,Option3,Option4,Answer
 Which if the following is/are the levels of implementation of data structure ?,Abstract level,Application level,Implementation level,All of the above,All of the above
 A binary search tree whose left subtree and right subtree differ in hight by at most 1 unit is called ?,AVL tree,Red-black tree,Lemma tree,None of the above,AVL tree
 What is the time complexity of inserting an element at the end of an array?,O(1),O(nlogn),O(log n),O(n),O(1)

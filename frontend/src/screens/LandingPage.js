@@ -1,26 +1,19 @@
 import React from 'react';
-import { useNavigate, useParams } from "react-router-dom"; // Import useHistory
+import { useNavigate } from "react-router-dom";
 import './LandingPage.css';
 import student from '../images/student.webp';
-import logo from '../images/logo.png';
+import Header from './header';
 
 const LandingPage = () => {
-  const navigate = useNavigate();  // Initialize useHistory
+  const navigate = useNavigate();
 
   const handleGetStartedClick = () => {
-    navigate('/signin'); // Navigate to /signup
+    navigate('/signin');
   };
 
   return (
     <div className="landing-page">
-      <header className="header">
-        <div className="logo"><img src={logo}></img></div>
-        <nav className="nav">
-          <a href="/signin">Sign In</a>
-          <a href="#">GitHub</a>
-          <button className="register-button">Register Now</button>
-        </nav>
-      </header>
+      <Header />
       <main className="main-content">
         <div className="left-content">
           <h1>StudySync</h1>

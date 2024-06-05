@@ -13,7 +13,7 @@ const TriviaResult = () => {
       <div className="result-card">
         <h1>Trivia Result</h1>
         <h2>Your Score: {score}</h2>
-        <Button variant="primary" onClick={() => navigate("/my-tests")}>
+        <Button variant="success" onClick={() => navigate("/my-tests")}>
           Go to Home
         </Button>
       </div>

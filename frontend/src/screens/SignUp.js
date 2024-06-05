@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { auth } from "./firebase-config";
 import "./auth.css";
 import { useNavigate } from "react-router-dom";
+import Header from "./header";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -37,6 +38,7 @@ const SignUp = () => {
 
   return (
     <div className="auth-container">
+      <Header />
       <form onSubmit={handleSignUp} className="auth-form">
         <h2>Sign Up</h2>
         {error && <p className="error">{error}</p>}

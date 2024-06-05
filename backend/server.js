@@ -15,7 +15,7 @@ app.use(cors());
 app.use(express.json());
 dotenv.config({ path: path.resolve(__dirname, '../env') });
 
-const openai = new OpenAI({ apiKey: "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"});
+const openai = new OpenAI({ apiKey: "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"});
 
 
 const completionEmitter = new EventEmitter();
@@ -73,6 +73,39 @@ Text2: ${text2}
 Example output format: [   {     "subtopic": "Subtopic 1",     "details": [       "Detail 1",       "Detail 2",       "Detail 3"     ]   },   {     "subtopic": "Subtopic 2",     "details": [       "Detail 1",       "Detail 2",       "Detail 3"     ]   } ]
 
 Now generate the flashcards: `;
+
+  try {
+    const response = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: [{ role: 'system', content: prompt }],
+      temperature: 0.7,
+    });
+
+    const generatedText = response.choices[0].message.content;
+    console.log("OpenAI response content:", generatedText);
+
+    try {
+      const flashcards = JSON.parse(generatedText);
+      return flashcards;
+    } catch (jsonError) {
+      console.error("Invalid JSON response:", generatedText);
+      throw new Error("Invalid JSON format");
+    }
+  } catch (apiError) {
+    console.error("OpenAI API error:", apiError);
+    throw new Error("Error generating flashcards.");
+  }
+}
+
+
+async function generateFlashcards1(text1) {
+  const prompt = ` Generate flashcards based on the provided texts. The output should be a JSON array where each flashcard is an object with "subtopic" and "details".
+
+Text1: ${text1}
+
+Example output format: [   {     "subtopic": "Subtopic 1",     "details": [       "Detail 1",       "Detail 2",       "Detail 3"     ]   },   {     "subtopic": "Subtopic 2",     "details": [       "Detail 1",       "Detail 2",       "Detail 3"     ]   } ]
+
+Now generate the flashcards follonwing the format I have provided: `;
 
   try {
     const response = await openai.chat.completions.create({
@@ -348,7 +381,7 @@ try {
   }
 
   const topicsText = missingTopics.join("\n\n");
-  const flashcards = await generateFlashcards(topicsText, topicsText);
+  const flashcards = await generateFlashcards1(topicsText);
   res.json({ flashcards });
 } catch (e) {
   console.error(e);

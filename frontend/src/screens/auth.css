@@ -19,6 +19,9 @@
   .auth-form h2 {
     margin-bottom: 1rem;
   }
+  button{
+    background-color: #85fe78;
+  }
   
   .auth-form input {
     margin-bottom: 1rem;
@@ -32,7 +35,7 @@
     padding: 0.5rem;
     border: none;
     border-radius: 0.25rem;
-    background-color: #007bff;
+    background-color: #27ac1f;
     color: white;
     cursor: pointer;
   }

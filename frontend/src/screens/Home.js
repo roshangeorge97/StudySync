@@ -7,6 +7,7 @@ import { auth, db } from "./firebase-config";
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc, collection, addDoc } from "firebase/firestore";
 import "./home.css";
+import logo from "../images/logo.png";
 
 const instance = axios.create({
   baseURL: "http://localhost:5001",
@@ -302,12 +303,12 @@ const handleReviewFlashcards = async () => {
   return (
     <div>
       <header className="header">
-        <div className="header-left">
-          <h1>StudySync: Personalizing Exam Experience</h1>
+        <div className="header-logo">
+          <img src={logo}></img>
         </div>
         <div className="header-right">
           <Dropdown>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
+            <Dropdown.Toggle variant=".bg-success" id="dropdown-basic">
               <FaUserCircle size={30} />
             </Dropdown.Toggle>
 
@@ -358,7 +359,7 @@ const handleReviewFlashcards = async () => {
               </div>
               <button
                 type="submit"
-                className="btn btn-primary custom-button mt-3"
+                className="btn btn-success custom-button mt-3"
                 disabled={isLoading}
               >
                 {isLoading ? "Analyzing PDFs..." : "Compare Documents"}
@@ -373,7 +374,7 @@ const handleReviewFlashcards = async () => {
               )} */}
               {showQuizButton1 && (
                 <button className="quiz-button" onClick={handleGenerateQuizAgain} disabled={isGeneratingQuiz}>
-                  {isGeneratingQuiz ? "Generating Quiz..." : "Challenge!"}
+                  {isGeneratingQuiz ? "Generating Quiz..." : "Challenge⚔️"}
                 </button>
               )}
               {/* {showFlashcardsButton && (
@@ -383,7 +384,7 @@ const handleReviewFlashcards = async () => {
               )} */}
               {showFlashcardsButton1 && (
                 <button className="flashcard-button" onClick={handleReviewFlashcards} disabled={isGeneratingFlashcards}>
-                  {isGeneratingFlashcards ? "Generating Flashcards..." : "Review Flashcards"}
+                  {isGeneratingFlashcards ? "Generating Flashcards..." : "Review Flashcards📑"}
                 </button>
               )}
             </div>
