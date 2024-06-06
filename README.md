@@ -24,6 +24,12 @@ StudySync is an innovative AI-driven solution designed to help students ensure t
 
 ## 🧐 About <a name = "about"></a>
 
+### Problem Statement
+Not all students of a class raise their hands to ask their doubts! This could be because they might feel shy, they are afraid of being mocked, or just assume themselves that they know the concept. In the fast-paced world of education, students often find themselves struggling to keep up with the curriculum. Gaps in their learning materials can lead to significant challenges during exams, affecting their overall academic performance. 
+
+### Solution
+StudySync is an innovative solution designed to help students ensure their study materials comprehensively cover their curriculum. By leveraging the power of AI, StudySync allows students to upload their notes—whether in the form of documents, PDFs, PowerPoint presentations, or photos of handwritten notes. The AI engine processes these uploads, identifies the covered topics, and compares them against the course curriculum to highlight any gaps. Recommendations for additional resources are then provided to fill these gaps, ensuring students are well-prepared for their exams. AI generated quizzes absed on this gap helping them to build thier self confidence, and the AI generated flashcards provides them with thier personlized learning journey!
+
 ### Features
 - Upload notes in various formats: documents, PDFs, PowerPoint presentations, or photos of handwritten notes.
 - AI-powered text extraction and topic identification using GPT-4 API.
@@ -50,7 +56,7 @@ To run this project, you need to have the following installed on your system:
 
 2. Navigate to the project directory:
    ```
-   cd studysync
+   cd StudySync
    ```
 
 3. Edit the .env file to enter your OpenAI API key.
@@ -80,8 +86,8 @@ To run this project, you need to have the following installed on your system:
 
 ## ⚡ Screenshots
 
-[![Upload Notes](/Screenshots/upload_notes.png)]()
 [![Homepage](/Screenshots/homepage.png)]()
+[![Upload Notes](/Screenshots/upload_notes.png)]()
 [![Personalized Quiz](/Screenshots/personalized_quiz.png)]()
 [![Flashcards](/Screenshots/flashcards.png)]()
 
