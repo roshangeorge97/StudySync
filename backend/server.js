@@ -185,8 +185,8 @@ const generateQuiz = async (text1, text2) => {
   }
 };
 
-app.get("/", (req, res) => {
-  res.json("Hello World!");
+app.use("/", (req, res) => {
+  res.send("Hello World!");
 });
 
 // Create a new test // Update the /api/createtest endpoint to include the isUploaded field
