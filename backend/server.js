@@ -12,6 +12,9 @@ const { getFirestore, doc, updateDoc, collection, addDoc, getDocs, getDoc } = re
 
 app.use(cors());
 app.use(express.json());
+app.use(cors({
+  origin: ['https://study-sync-frontend.vercel.app', 'http://localhost:3000']
+}));
 require('dotenv').config();
 
 // Use the OpenAI API key from the environment variables
