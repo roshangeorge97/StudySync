@@ -10,7 +10,7 @@ import "./home.css";
 import logo from "../images/logo.png";
  
 const instance = axios.create({
-  baseURL: "http://localhost:5001",
+  baseURL: "https://studysync-odhf.onrender.com",
   timeout: 1000000,
   headers: { "X-Custom-Header": "foobar" },
 });
