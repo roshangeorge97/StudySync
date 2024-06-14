@@ -13,7 +13,9 @@ const { getFirestore, doc, updateDoc, collection, addDoc, getDocs, getDoc } = re
 app.use(cors());
 app.use(express.json());
 app.use(cors({
-  origin: ['https://study-sync-frontend.vercel.app', 'http://localhost:3000']
+  origin: ['https://study-sync-frontend.vercel.app', 'http://localhost:3000'],
+  methods: ['GET', 'POST'],
+  credentials: true,
 }));
 require('dotenv').config();
 
@@ -182,6 +184,10 @@ const generateQuiz = async (text1, text2) => {
     throw new Error('Error generating quiz.');
   }
 };
+
+app.get("/", (req, res) => {
+  res.json("Hello World!");
+});
 
 // Create a new test // Update the /api/createtest endpoint to include the isUploaded field
 app.post("/api/createtest", async (req, res) => {
