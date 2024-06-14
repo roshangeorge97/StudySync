@@ -1,5 +1,4 @@
 const express = require("express");
-const dotenv = require("dotenv");
 var cors = require("cors");
 const app = express();
 const OpenAI = require("openai");
@@ -16,7 +15,7 @@ app.use(express.json());
 require('dotenv').config();
 
 // Use the OpenAI API key from the environment variables
-const openai = new OpenAI({ apiKey: "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" });
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 
 const completionEmitter = new EventEmitter();
