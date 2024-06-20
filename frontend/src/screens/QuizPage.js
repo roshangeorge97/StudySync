@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useLocation } from "react-router-dom"; // Import useHistory
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import "./QuizPage.css";
 
 const QuizPage = () => {
@@ -9,14 +9,34 @@ const QuizPage = () => {
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [results, setResults] = useState([]);
-  const [isLoading, setIsLoading] = useState(false); // New state for loading status
+  const [isLoading, setIsLoading] = useState(false);
+  const [loadingMessage, setLoadingMessage] = useState("Submitting quiz, this may take a while...");
+
+  useEffect(() => {
+    let interval;
+    if (isLoading) {
+      const messages = [
+        "Submitting quiz, this may around 5 minutes...",
+        "Uploading your answers into the database...",
+        "Almost there..."
+      ];
+      let index = 0;
+      interval = setInterval(() => {
+        setLoadingMessage(messages[index]);
+        index = (index + 1) % messages.length;
+      }, 5000); // Change message every 2 seconds
+    } else {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [isLoading]);
 
   const handleAnswerButtonClick = (isCorrect, subtopic) => {
     const updatedResults = [
       ...results,
       {
         question: quiz[currentQuestionIndex].question,
-        subtopic: subtopic || "Unknown", // Use "Unknown" as a placeholder if subtopic is not available
+        subtopic: subtopic || "Unknown",
         correct: isCorrect,
       },
     ];
@@ -33,7 +53,7 @@ const QuizPage = () => {
   };
 
   const handleSubmit = async () => {
-    setIsLoading(true); // Set loading state to true
+    setIsLoading(true);
     try {
       const response = await fetch("https://studysync-odhf.onrender.com/results", {
         method: "POST",
@@ -55,20 +75,20 @@ const QuizPage = () => {
     } catch (error) {
       console.error("Error submitting results:", error);
     } finally {
-      setIsLoading(false); // Set loading state to false
+      setIsLoading(false);
     }
   };
 
   return (
     <div className="quiz-container">
-      {isLoading ? ( // Conditionally render the loader
-        <div className="loader">Submitting quiz, this may take a while...</div>
+      {isLoading ? (
+        <div className="loader">{loadingMessage}</div>
       ) : showScore ? (
         <>
           <p className="score-section">
             You scored {score} out of {quiz.length}
           </p>
-          <button onClick={handleSubmit} className="submit-button">
+          <button onClick={handleSubmit} className="submit-button" disabled={isLoading}>
             Submit
           </button>
         </>
