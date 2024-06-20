@@ -35,7 +35,7 @@ const QuizPage = () => {
   const handleSubmit = async () => {
     setIsLoading(true); // Set loading state to true
     try {
-      const response = await fetch("http://localhost:5001/results", {
+      const response = await fetch("https://studysync-odhf.onrender.com/results", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
