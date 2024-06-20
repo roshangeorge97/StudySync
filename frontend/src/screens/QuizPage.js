@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./QuizPage.css";
 
 const QuizPage = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { quiz, userId, testId } = location.state;
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -69,6 +70,7 @@ const QuizPage = () => {
       const data = await response.json();
       if (data.success) {
         alert("Thanks for taking the quiz!");
+        window.location = `/home/${testId}`;
       } else {
         alert("There was an issue submitting your results. Please try again.");
       }
