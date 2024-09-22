@@ -1,12 +1,11 @@
 const express = require("express");
 var cors = require("cors");
 const app = express();
-const OpenAI = require("openai");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 const { EventEmitter } = require("events");
 const multer = require("multer");
 const path = require("path");
 const { PDFExtract } = require("pdf.js-extract");
-const { encode } = require("gpt-3-encoder");
 const { db } = require("./firebase-config");
 const { getFirestore, doc, updateDoc, collection, addDoc, getDocs, getDoc } = require('firebase/firestore');
 
@@ -19,9 +18,8 @@ app.use(cors({
 }));
 require('dotenv').config();
 
-// Use the OpenAI API key from the environment variables
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-
+// Initialize the Google Generative AI with your API key
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 const completionEmitter = new EventEmitter();
 
@@ -29,7 +27,9 @@ const dest = path.join(__dirname, "pdfsummary");
 const upload = multer({ dest });
 const type = upload.fields([{ name: "pdf1" }, { name: "pdf2" }]);
 
-const calculateTokens = (text) => encode(text).length;
+function removeCodeBlockMarkers(text) {
+  return text.replace(/```json\n|```/g, '').trim();
+}
 
 const summarizeChunk = async (chunk, maxWords) => {
   let condition = "";
@@ -37,39 +37,23 @@ const summarizeChunk = async (chunk, maxWords) => {
     condition = `in about ${maxWords} words`;
   }
 
-  const message = {
-    role: "user",
-    content: `Please summarize the following text ${condition}:\n"""${chunk}"""\n\nSummary:`,
-  };
-
-  const request = {
-    model: "gpt-3.5-turbo",
-    messages: [message],
-    max_tokens: 4000,
-  };
+  const prompt = `Please summarize the following text ${condition}:\n"""${chunk}"""\n\nSummary:`;
 
   try {
-    const response = await openai.chat.completions.create(request);
-    return response.choices[0].message.content;
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    return response.text();
   } catch (error) {
-    if (error instanceof OpenAI.APIError) {
-      console.error(error.status); // e.g. 401
-      console.error(error.message); // e.g. The authentication token you passed was invalid...
-      console.error(error.code); // e.g. 'invalid_api_key'
-      console.error(error.type); // e.g. 'invalid_request_error'
-    } else {
-      console.log(error);
-    }
+    console.error("Gemini API error:", error);
     throw new Error(error);
   }
 };
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-
-
 async function generateFlashcards(text1, text2) {
-  const prompt = ` Generate flashcards based on the provided texts. The output should be a JSON array where each flashcard is an object with "subtopic" and "details".
+  const prompt = `Generate flashcards based on the provided texts. The output should be a JSON array where each flashcard is an object with "subtopic" and "details".
 
 Text1: ${text1}
 
@@ -77,17 +61,17 @@ Text2: ${text2}
 
 Example output format: [   {     "subtopic": "Subtopic 1",     "details": [       "Detail 1",       "Detail 2",       "Detail 3"     ]   },   {     "subtopic": "Subtopic 2",     "details": [       "Detail 1",       "Detail 2",       "Detail 3"     ]   } ]
 
-Now generate the flashcards: `;
+Now generate the flashcards:`;
 
   try {
-    const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages: [{ role: 'system', content: prompt }],
-      temperature: 0.7,
-    });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    let generatedText = response.text();
 
-    const generatedText = response.choices[0].message.content;
-    console.log("OpenAI response content:", generatedText);
+    console.log("Gemini response content:", generatedText);
+
+    generatedText = removeCodeBlockMarkers(generatedText);
 
     try {
       const flashcards = JSON.parse(generatedText);
@@ -97,30 +81,30 @@ Now generate the flashcards: `;
       throw new Error("Invalid JSON format");
     }
   } catch (apiError) {
-    console.error("OpenAI API error:", apiError);
+    console.error("Gemini API error:", apiError);
     throw new Error("Error generating flashcards.");
   }
 }
 
-
 async function generateFlashcards1(text1) {
-  const prompt = ` Generate flashcards based on the provided texts. The output should be a JSON array where each flashcard is an object with "subtopic" and "details".
+  const prompt = `Generate flashcards based on the provided texts. The output should be a JSON array where each flashcard is an object with "subtopic" and "details".
 
 Text1: ${text1}
 
 Example output format: [   {     "subtopic": "Subtopic 1",     "details": [       "Detail 1",       "Detail 2",       "Detail 3"     ]   },   {     "subtopic": "Subtopic 2",     "details": [       "Detail 1",       "Detail 2",       "Detail 3"     ]   } ]
 
-Now generate the flashcards follonwing the format I have provided: `;
+Now generate the flashcards following the format I have provided:`;
 
   try {
-    const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages: [{ role: 'system', content: prompt }],
-      temperature: 0.7,
-    });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    let generatedText = response.text();
 
-    const generatedText = response.choices[0].message.content;
-    console.log("OpenAI response content:", generatedText);
+    console.log("Gemini response content:", generatedText);
+
+    // Remove code block markers if present
+    generatedText = generatedText.replace(/```json\n|```/g, '');
 
     try {
       const flashcards = JSON.parse(generatedText);
@@ -130,61 +114,65 @@ Now generate the flashcards follonwing the format I have provided: `;
       throw new Error("Invalid JSON format");
     }
   } catch (apiError) {
-    console.error("OpenAI API error:", apiError);
+    console.error("Gemini API error:", apiError);
     throw new Error("Error generating flashcards.");
   }
 }
 
 const getMissingTopics = async (text1, text2) => {
-  const message = {
-    role: "user",
-    content: `Analyze the differences between the two texts. Identify and list the topics present in the first text but missing in the second text:\n\nText 1:\n"""${text1}"""\n\nText 2:\n"""${text2}"""\n\nMissing Topics:`,
-  };
+  const prompt = `Analyze the differences between the two texts. Identify and list the topics present in the first text but missing in the second text:
 
-  const request = {
-    model: "gpt-3.5-turbo",
-    messages: [message],
-    max_tokens: 1000,
-  };
+Text 1:
+"""${text1}"""
+
+Text 2:
+"""${text2}"""
+
+Missing Topics:`;
 
   try {
-    const response = await openai.chat.completions.create(request);
-    return response.choices[0].message.content;
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    let missingTopics = response.text();
+    
+    missingTopics = removeCodeBlockMarkers(missingTopics);
+    
+    return missingTopics;
   } catch (error) {
-    if (error instanceof OpenAI.APIError) {
-      console.error(error.status);
-      console.error(error.message);
-      console.error(error.code);
-      console.error(error.type);
-    } else {
-      console.log(error);
-    }
+    console.error("Gemini API error:", error);
     throw new Error(error);
   }
 };
 
 const generateQuiz = async (text1, text2) => {
-  const message = {
-    role: "user",
-    content: `Generate a 10-question quiz based on the following two texts. Each question should have 4 options with one correct answer. The quiz should focus on topics present in the second text (Text 2) but missing or insufficiently covered in the first text (Text 1). Format the response as a JSON array where each object has a 'question', an 'options' array with 'text' and 'isCorrect' fields:\n\nText 1:\n"""${text1}"""\n\nText 2:\n"""${text2}"""\n\nQuiz:`,
-  };
+  const prompt = `Generate a 10-question quiz based on the following two texts. Each question should have 4 options with one correct answer. The quiz should focus on topics present in the second text (Text 2) but missing or insufficiently covered in the first text (Text 1). Format the response as a JSON array where each object has a 'question', an 'options' array with 'text' and 'isCorrect' fields:
 
-  const request = {
-    model: "gpt-3.5-turbo",
-    messages: [message],
-    max_tokens: 3000,
-  };
+Text 1:
+"""${text1}"""
+
+Text 2:
+"""${text2}"""
+
+Quiz:`;
 
   try {
-    const response = await openai.chat.completions.create(request);
-    const quiz = JSON.parse(response.choices[0].message.content);
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    let quizText = response.text();
+    
+    console.log("Gemini response content:", quizText);
+    
+    quizText = removeCodeBlockMarkers(quizText);
+    
+    const quiz = JSON.parse(quizText);
     return quiz;
   } catch (error) {
-    console.error(error);
+    console.error("Error generating quiz:", error);
     throw new Error('Error generating quiz.');
   }
 };
-
 
 // Create a new test // Update the /api/createtest endpoint to include the isUploaded field
 app.post("/api/createtest", async (req, res) => {
@@ -398,17 +386,20 @@ try {
 app.post('/api/getsubtopic', async (req, res) => {
   const { question } = req.body;
 
-  const prompt = `Determine the subtopic for the following question:\n\nQuestion: ${question}\n\nSubtopic:`;
+  const prompt = `Determine the subtopic for the following question:
 
-  const request = {
-    model: "gpt-3.5-turbo",
-    messages: [{ role: 'user', content: prompt }],
-    max_tokens: 3000,
-  };
+Question: ${question}
+
+Subtopic:`;
 
   try {
-    const response = await openai.chat.completions.create(request);
-    const subtopic = response.choices[0].message.content.trim();
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    let subtopic = response.text().trim();
+    
+    subtopic = removeCodeBlockMarkers(subtopic);
+    
     res.json({ subtopic });
   } catch (error) {
     console.error("Error getting subtopic:", error);
@@ -430,22 +421,15 @@ app.post("/results", async (req, res) => {
 
     let missingTopics = testDoc.data().missingTopics || [];
 
-    // Function to find closely related topics using OpenAI API
+    // Function to find closely related topics using Gemini API
     const findRelatedTopics = async (topic, topicsList) => {
-      const message = {
-        role: "user",
-        content: `Find closely related topics to "${topic}" in the following list: [${topicsList.join(', ')}]`,
-      };
-
-      const request = {
-        model: "gpt-3.5-turbo",
-        messages: [message],
-        max_tokens: 1000,
-      };
+      const prompt = `Find closely related topics to "${topic}" in the following list: [${topicsList.join(', ')}]`;
 
       try {
-        const response = await openai.chat.completions.create(request);
-        const relatedTopics = response.choices[0].message.content.split(',').map(t => t.trim());
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        const relatedTopics = response.text().split(',').map(t => t.trim());
         return relatedTopics;
       } catch (error) {
         console.error("Error finding related topics:", error);
@@ -498,7 +482,6 @@ app.post("/results", async (req, res) => {
     res.status(500).json({ error: "An error occurred while processing the results." });
   }
 });
-
 
 const PORT = 5001;
 app.listen(PORT, console.log(`Server started on port ${PORT}`));
