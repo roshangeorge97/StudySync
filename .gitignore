@@ -1,5 +1,6 @@
 node_modules/
 .env
+backend/.env
 backend/pdfsummary/
 backend/pdfsummary/.env
 .vercel
